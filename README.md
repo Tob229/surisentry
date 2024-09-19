@@ -21,6 +21,7 @@ git clone https://github.com/Tob229/surisentry.git
 cd surisentry
 chmod +x setup.sh
 sudo ./setup.sh
+sudo ./setup.sh -r # pour supprimer ou desinstaller en cas d'erreur de configuration
 ```
 
 Le script copie les fichiers nécessaires, crée les répertoires de logs, configure le service et le démarre.
