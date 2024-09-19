@@ -43,9 +43,12 @@ min_delay_between_alerts = config.getint('Alertes', 'min_delay_between_alerts')
 max_emails_per_day = config.getint('Alertes', 'max_emails_per_day')
 max_alert_repeats = config.getint('Alertes', 'max_alert_repeats')
 
+# Récupérer l'ID de l'instance
+instance_id = config.get('Instance', 'instance_id')
+
 last_sent_time = 0
 sent_alerts_today = []
-alert_repeat_count = defaultdict(int)  # Dictionnaire pour compter les envois d'une alerte unique
+alert_repeat_count = defaultdict(int)
 
 # Fonction pour envoyer un email
 def send_email(subject, body, alert_ids_priorities):
@@ -69,7 +72,7 @@ def send_email(subject, body, alert_ids_priorities):
         server.quit()
 
         # Logging des alertes envoyées (avec leurs IDs et priorités)
-        logging.info(f"Email envoyé avec succès: {subject}")
+        logging.info(f"Email envoyé avec succès: {subject} - Instance: {instance_id}")
         logging.info("Détails des alertes envoyées :")
         for alert_info in alert_ids_priorities:
             logging.info(f"    - {alert_info}")
@@ -118,7 +121,7 @@ def main():
         if (current_time - last_sent_time) >= min_delay_between_alerts:
             alerts = filter_alerts()
             if alerts:
-                subject = "Alerte IDS - Suricata"
+                subject = f"Alerte IDS - Suricata | Instance: {instance_id}"
                 body = "\n".join(alerts)
                 body += "\n\nCeci est un mail généré par Surisentry."
                 
