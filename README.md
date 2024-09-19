@@ -17,8 +17,8 @@ Surisentry est un outil de surveillance des alertes générées par Suricata, qu
 Pour installer Surisentry, clonez le dépôt GitHub et exécutez le script d'installation :
 
 ```bash
-git clone <URL_DU_DEPOT>
-cd <NOM_DU_REPO>
+git clone https://github.com/Tob229/surisentry.git
+cd surisentry
 chmod +x setup.sh
 sudo ./setup.sh
 ```
