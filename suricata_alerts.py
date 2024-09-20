@@ -1,4 +1,4 @@
-import os
+sudoimport os
 import smtplib
 import time
 import logging
@@ -10,7 +10,7 @@ from collections import defaultdict
 
 # Configuration
 config_file = '/etc/surisentry/surisentry.conf'
-log_file = '/var/log/surisentry.log'
+log_file = '/var/log/surisentry/surisentry.log'
 alert_log_file = '/var/log/suricata/fast.log'
 
 # Gérer les arguments de ligne de commande
